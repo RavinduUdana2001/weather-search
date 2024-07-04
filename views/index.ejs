@@ -59,7 +59,7 @@
         <button type="submit">Get Weather</button>
     </form>
 
-    <% if (weather) { %>
+    <% if (typeof weather !== 'undefined') { %>
         <div class="weather-container">
             <h2>Weather in <%= location %>:</h2>
             <% if (weather.includes('Will it rain? Yes')) { %>
