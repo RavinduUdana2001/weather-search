@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-+lr0a3D/J1X71M8sNTx7N5/CXrt7YJ7A5d6LZO5pXx5xRf1ELPf6Q2XQ6/XMydHGBcPzDA7k4IwZy3QXlCWew==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .weather-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .weather-container h2 {
+            margin: 0 0 20px;
+        }
+        .weather-icon {
+            font-size: 50px;
+            margin: 20px 0;
+        }
+        .weather-description {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Weather Forecast</h1>
+    <form action="/weather" method="get">
+        <label for="location">Enter location:</label>
+        <input type="text" id="location" name="location" required>
+        <button type="submit">Get Weather</button>
+    </form>
+
+    <% if (weather) { %>
+        <div class="weather-container">
+            <h2>Weather in <%= location %>:</h2>
+            <% if (weather.includes('Will it rain? Yes')) { %>
+                <div>
+                    <img src="images/heavy-rain.png" alt="Rainy weather" class="img-fluid" style="width: 100px; height:100px;">
+                </div>
+            <% } else { %>
+                <div>
+                    <img src="images/cloudy-day.png" alt="Cloudy weather" class="img-fluid" style="width: 100px; height:100px;">
+                </div>
+            <% } %>
+            <p class="weather-description"><%= weather %></p>
+        </div>
+    <% } %>
+</body>
+</html>
